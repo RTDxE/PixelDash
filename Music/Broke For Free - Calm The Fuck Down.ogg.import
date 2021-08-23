@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Broke For Free - Calm The Fuck Down.ogg-08b21982731e343cb0e50972e5b18f67.oggstr"
+
+[deps]
+
+source_file="res://Music/Broke For Free - Calm The Fuck Down.ogg"
+dest_files=[ "res://.import/Broke For Free - Calm The Fuck Down.ogg-08b21982731e343cb0e50972e5b18f67.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

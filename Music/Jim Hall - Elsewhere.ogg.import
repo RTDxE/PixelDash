@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jim Hall - Elsewhere.ogg-4f63a691f2cb39a456e47d0ac314ecfb.oggstr"
+
+[deps]
+
+source_file="res://Music/Jim Hall - Elsewhere.ogg"
+dest_files=[ "res://.import/Jim Hall - Elsewhere.ogg-4f63a691f2cb39a456e47d0ac314ecfb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 		if tm != null:
 			var pos = (tm as TileMap).world_to_map(position - Vector2(0, -8) - tm.position)
 			if (tm as TileMap).get_cellv(pos) == 1:
-				get_tree().reload_current_scene()
+				die()
+				return
 		gravity = 10
 		if Input.is_action_just_pressed("jump") or Input.is_mouse_button_pressed(BUTTON_LEFT):
 			gravity = -150
@@ -22,13 +23,18 @@ func _physics_process(delta: float) -> void:
 		gravity += 600 * delta
 	
 	if is_on_wall():
-		get_tree().reload_current_scene()
+		die()
+		return
 	elif is_on_ceiling():
 		if tm != null:
 			var pos = (tm as TileMap).world_to_map(position - Vector2(0, 8) - tm.position)
 			if (tm as TileMap).get_cellv(pos) == 1:
-				get_tree().reload_current_scene()
+				die()
+				return
 
+func die() -> void:
+	set_physics_process(false)
+	get_parent().end_game()
 
 func _on_detector_body_entered(body: Node) -> void:
 	if body is TileMap:

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Broke-For-Free-Calm-The-Fuck-Down.mp3-e8be08678c0db62fdfea720114c4aa47.mp3str"
+
+[deps]
+
+source_file="res://Music/Broke-For-Free-Calm-The-Fuck-Down.mp3"
+dest_files=[ "res://.import/Broke-For-Free-Calm-The-Fuck-Down.mp3-e8be08678c0db62fdfea720114c4aa47.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -8,12 +8,32 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "GameScoreAds",
+"language": "GDScript",
+"path": "res://Code/Core/GameScore/GameScoreAds.gd"
+}, {
+"base": "Node",
+"class": "GameScoreApp",
+"language": "GDScript",
+"path": "res://Code/Core/GameScore/GameScoreApp.gd"
+} ]
+_global_script_class_icons={
+"GameScoreAds": "",
+"GameScoreApp": ""
+}
+
 [application]
 
 config/name="Pixel Dash"
-run/main_scene="res://gamer.tscn"
+run/main_scene="res://menu.tscn"
 run/delta_sync_after_draw=true
 config/icon="res://icon.png"
+
+[autoload]
+
+GameScore="*res://Code/Core/GameScore/GameScore.gd"
 
 [debug]
 
@@ -23,8 +43,8 @@ settings/fps/force_fps=60
 
 window/size/width=160
 window/size/height=120
-window/size/test_width=640
-window/size/test_height=360
+window/size/test_width=1280
+window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 

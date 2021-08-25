@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Jim-Hall-Elsewhere.mp3-76b8b750663171f0a5c70c46ce28c4f7.mp3str"
+
+[deps]
+
+source_file="res://Music/Jim-Hall-Elsewhere.mp3"
+dest_files=[ "res://.import/Jim-Hall-Elsewhere.mp3-76b8b750663171f0a5c70c46ce28c4f7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

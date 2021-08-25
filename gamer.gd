@@ -48,10 +48,13 @@ func _process(delta: float) -> void:
 	if player.position > next_tmap.position:
 		spawn_next_tmap()
 
-func end_game() -> void:
+func end_game(fall: bool = false) -> void:
 	set_process(false)
-	$anim.play("die")
-	$UI/dieScore.text = "DISTANCE: " + str(score) + "m"
+	if fall:
+		$anim.play("die_fall")
+	else:
+		$anim.play("die")
+	$UI/dieScore.text = tr("DISTANCE") + ": " + str(score) + "m"
 	GameScore.add_field("score", score)
 	var record = GameScore.get_field("record")
 	if record != null:
@@ -59,6 +62,6 @@ func end_game() -> void:
 		if record < score:
 			GameScore.set_field("record", score)
 			record = score
-		$UI/record.text = "RECORD: " + str(record) + "m"
+		$UI/record.text = tr("RECORD") + ": " + str(record) + "m"
 	else:
-		$UI/record.text = "RECORD: <unknown>"
+		$UI/record.text = tr("RECORD") + ": <???>"

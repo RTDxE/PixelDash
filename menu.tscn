@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://art/logo.png" type="Texture" id=1]
 [ext_resource path="res://fonts/gohufont_11.tres" type="DynamicFont" id=2]
@@ -7,6 +7,14 @@
 [ext_resource path="res://Music/Broke-For-Free-Calm-The-Fuck-Down.mp3" type="AudioStream" id=5]
 [ext_resource path="res://musicToggle.gd" type="Script" id=6]
 [ext_resource path="res://menu.gd" type="Script" id=7]
+[ext_resource path="res://Code/Editor/ReloadPage.gd" type="Script" id=8]
+
+[sub_resource type="InputEventAction" id=4]
+action = "jump"
+pressed = true
+
+[sub_resource type="ShortCut" id=5]
+shortcut = SubResource( 4 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "New Anim"
@@ -55,8 +63,32 @@ tracks/2/path = NodePath("Logo:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Logo:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 160, 120 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -84,10 +116,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -50 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -50 ), Vector2( 0, -50 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("tapToStartLabel:visible")
@@ -101,23 +133,35 @@ tracks/2/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Logo:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 160, 120 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureRect:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -50 ), Vector2( 0, -50 ), Vector2( 0, 0 ) ]
+}
 
 [node name="menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Logo" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -50.0
-margin_right = 160.0
-margin_bottom = 70.0
-texture = ExtResource( 1 )
-stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -133,9 +177,36 @@ margin_top = 2.36967
 margin_right = 59.5
 margin_bottom = 48.3697
 custom_fonts/font = ExtResource( 2 )
-text = "Tap to Start"
+text = "TAP_START"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 80.0
+margin_top = 10.0
+margin_right = 240.0
+margin_bottom = 130.0
+texture = ExtResource( 1 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+margin_bottom = -50.0
+texture = ExtResource( 1 )
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -144,6 +215,8 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 5 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 autoplay = "start"
@@ -173,6 +246,9 @@ stream = ExtResource( 5 )
 pitch_scale = 1.2
 autoplay = true
 bus = "Music"
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 8 )
 
 [connection signal="pressed" from="startButton" to="." method="_on_startButton_pressed"]
 [connection signal="toggled" from="musicToggle" to="musicToggle" method="_on_musicToggle_toggled"]

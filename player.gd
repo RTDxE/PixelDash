@@ -31,10 +31,14 @@ func _physics_process(delta: float) -> void:
 			if (tm as TileMap).get_cellv(pos) == 1:
 				die()
 				return
+	
+	if position.y > 512:
+		die(true)
+		return
 
-func die() -> void:
+func die(fall: bool = false) -> void:
 	set_physics_process(false)
-	get_parent().end_game()
+	get_parent().end_game(fall)
 
 func _on_detector_body_entered(body: Node) -> void:
 	if body is TileMap:

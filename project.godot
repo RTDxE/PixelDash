@@ -76,6 +76,10 @@ jump={
  ]
 }
 
+[locale]
+
+translations=PoolStringArray( "res://main.en.translation", "res://main.ru.translation" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

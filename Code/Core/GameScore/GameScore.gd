@@ -4,8 +4,8 @@ var _gs
 
 signal initialized
 
-var ads = GameScoreAds.new()
-var app = GameScoreApp.new()
+var ads: GameScoreAds = GameScoreAds.new()
+var app: GameScoreApp = GameScoreApp.new()
 
 var is_initalized setget , get_is_initalized
 func get_is_initalized() -> bool: return _gs != null

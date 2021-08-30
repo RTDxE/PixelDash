@@ -66,4 +66,5 @@ func end_game(fall: bool = false) -> void:
 	else:
 		$UI/record.text = tr("RECORD") + ": <???>"
 	yield(get_tree().create_timer(0.5), "timeout")
-	GameScore.ads.show_fullscreen()
+	if GameScore.is_initalized:
+		GameScore.ads.show_fullscreen()

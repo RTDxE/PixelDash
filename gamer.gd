@@ -21,6 +21,9 @@ var prev_tmap
 var current_tmap
 var next_tmap
 
+onready var score_node = $UI/Label
+onready var die_score_node = $UI/dieScore
+onready var record_score_node = $UI/record
 
 func _ready() -> void:
 	randomize()
@@ -43,7 +46,7 @@ func spawn_next_tmap() -> void:
 
 func _process(delta: float) -> void:
 	score = int(player.position.x / 16)
-	$UI/Label.text = str(int(player.position.x / 16))
+	score_node.text = str(score)
 	
 	if player.position > next_tmap.position:
 		spawn_next_tmap()
@@ -54,7 +57,7 @@ func end_game(fall: bool = false) -> void:
 		$anim.play("die_fall")
 	else:
 		$anim.play("die")
-	$UI/dieScore.text = tr("DISTANCE") + ": " + str(score) + "m"
+	die_score_node.text = tr("DISTANCE") + ": " + str(score) + "m"
 	GameScore.add_field("score", score)
 	var record = GameScore.get_field("record")
 	if record != null:
@@ -62,9 +65,9 @@ func end_game(fall: bool = false) -> void:
 		if record < score:
 			GameScore.set_field("record", score)
 			record = score
-		$UI/record.text = tr("RECORD") + ": " + str(record) + "m"
+		record_score_node.text = tr("RECORD") + ": " + str(record) + "m"
 	else:
-		$UI/record.text = tr("RECORD") + ": <???>"
+		record_score_node.text = tr("RECORD") + ": <???>"
 	yield(get_tree().create_timer(0.5), "timeout")
 	if GameScore.is_initalized:
 		GameScore.ads.show_fullscreen()

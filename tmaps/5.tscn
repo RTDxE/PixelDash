@@ -1,9 +1,65 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tmaps/tset.tres" type="TileSet" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 24, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 24, 8 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 32, 8 )
 
 [node name="5" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 458773, 0, 0, 458774, 0, 3, 458776, 1, 0, 524288, 0, 0, 524289, 0, 3, 524291, 0, 0, 524292, 0, 4, 524293, 0, 4, 524294, 0, 3, 524303, 0, 0, 524304, 0, 4, 524305, 0, 4, 524306, 0, 3, 524312, 0, 0, 524313, 0, 4, 524314, 0, 3, 589831, 0, 0, 589832, 0, 4, 589833, 0, 4, 589834, 0, 3, 589836, 0, 0, 589837, 0, 4, 589838, 0, 3, 589843, 1, 0, 589853, 0, 0, 589854, 0, 3, 655379, 0, 0, 655380, 0, 4, 655381, 0, 4, 655382, 0, 4, 655383, 0, 4, 655384, 0, 4, 655385, 0, 4, 655386, 0, 4, 655387, 0, 4, 655388, 0, 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="boxCol" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 144, 152 )
+shape = SubResource( 1 )
+
+[node name="boxCol3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 272, 136 )
+shape = SubResource( 1 )
+
+[node name="boxCol2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 384, 168 )
+shape = SubResource( 2 )
+
+[node name="boxCol4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 408, 136 )
+shape = SubResource( 3 )
+
+[node name="boxCol12" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 216, 152 )
+shape = SubResource( 4 )
+
+[node name="boxCol8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 480, 152 )
+shape = SubResource( 5 )
+
+[node name="boxCol9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 16, 136 )
+shape = SubResource( 5 )
+
+[node name="boxCol10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 352, 120 )
+shape = SubResource( 5 )
+
+[node name="boxCol7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 80, 136 )
+shape = SubResource( 6 )

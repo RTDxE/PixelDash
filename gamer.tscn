@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://art/art1.png" type="Texture" id=2]
 [ext_resource path="res://player.gd" type="Script" id=3]
@@ -7,8 +7,14 @@
 [ext_resource path="res://fonts/gohufont-uni-11.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Code/Editor/ReloadPage.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 4 )
+[sub_resource type="Curve" id=14]
+_data = [ Vector2( 0, 0 ), -3.37273, 3.12351, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CircleShape2D" id=12]
+radius = 3.87591
+
+[sub_resource type="Gradient" id=13]
+colors = PoolColorArray( 1, 1, 1, 0.486275, 1, 1, 1, 0 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 5.48419 )
@@ -459,16 +465,31 @@ tracks/0/keys = {
 [node name="game" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="trail" type="Line2D" parent="."]
+width = 2.0
+width_curve = SubResource( 14 )
+default_color = Color( 0, 0.352941, 0.45098, 1 )
+
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 0.124329, 110.043 )
+position = Vector2( 0, 124 )
 collision/safe_margin = 0.1
 script = ExtResource( 3 )
 
 [node name="col" type="CollisionShape2D" parent="player"]
-shape = SubResource( 1 )
+shape = SubResource( 12 )
 
 [node name="body" type="Sprite" parent="player"]
 texture = ExtResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="player/body"]
+visible = false
+show_behind_parent = true
+amount = 16
+local_coords = false
+texture = ExtResource( 2 )
+flag_align_y = true
+gravity = Vector2( 0, 0 )
+color_ramp = SubResource( 13 )
 
 [node name="cam" type="Camera2D" parent="player"]
 position = Vector2( 29.3368, -0.611176 )

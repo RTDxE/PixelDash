@@ -5,15 +5,42 @@ var target_rot = 0
 var gravity = 0
 var tm
 
+var point_iter = 0
+
+var vel: Vector2
+
+onready var body_node = $body
+onready var trail_node = $"../trail"
+
+func _ready() -> void:
+	for i in 24:
+		trail_node.add_point(global_position + Vector2(-(24-i) * 2, 0))
+
+func _process(delta: float) -> void:
+	if is_on_floor():
+		body_node.rotation_degrees = lerp(body_node.rotation_degrees, 0, delta * 20)
+	else:
+		body_node.rotation_degrees = lerp(body_node.rotation_degrees, (vel.y)/2, delta * 5)
+
 func _physics_process(delta: float) -> void:
-	var vel = Vector2(100, gravity)
+	if point_iter % 3 == 0:
+		trail_node.add_point(global_position)
+		
+		if trail_node.points.size() > 24:
+			trail_node.remove_point(0)
+	else:
+		trail_node.points[trail_node.points.size()-1] = global_position
+	
+	point_iter += 1
+	
+	vel = Vector2(100, gravity)
 	
 	move_and_slide(vel, Vector2.UP)
 	
 	if is_on_floor():
 		if tm != null:
-			var pos = (tm as TileMap).world_to_map(position - Vector2(0, -8) - tm.position)
-			if (tm as TileMap).get_cellv(pos) == 1:
+			var pos = tm.world_to_map(position - Vector2(0, -8) - tm.position)
+			if tm.get_cellv(pos) == 1:
 				die()
 				return
 		gravity = 10
@@ -27,8 +54,8 @@ func _physics_process(delta: float) -> void:
 		return
 	elif is_on_ceiling():
 		if tm != null:
-			var pos = (tm as TileMap).world_to_map(position - Vector2(0, 8) - tm.position)
-			if (tm as TileMap).get_cellv(pos) == 1:
+			var pos = tm.world_to_map(position - Vector2(0, 8) - tm.position)
+			if tm.get_cellv(pos) == 1:
 				die()
 				return
 	
@@ -37,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 func die(fall: bool = false) -> void:
+	set_process(false)
 	set_physics_process(false)
 	get_parent().end_game(fall)
 

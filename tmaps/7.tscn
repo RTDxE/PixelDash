@@ -1,9 +1,53 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tmaps/tset.tres" type="TileSet" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40, 8 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 56, 8 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 48, 8 )
 
 [node name="7" type="TileMap"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 458755, 1, 0, 458770, 1, 0, 524288, 0, 0, 524289, 0, 4, 524290, 0, 4, 524291, 0, 4, 524292, 0, 4, 524293, 0, 3, 524303, 0, 0, 524304, 0, 4, 524305, 0, 4, 524306, 0, 4, 524307, 0, 4, 524308, 0, 4, 524309, 0, 3, 524311, 0, 0, 524312, 0, 3, 524314, 0, 0, 524315, 0, 4, 524316, 0, 4, 524317, 0, 4, 524318, 0, 3, 589835, 1, 0, 589836, 0, 0, 589837, 0, 4, 589838, 0, 3, 655367, 0, 0, 655368, 0, 4, 655369, 0, 4, 655370, 0, 4, 655371, 0, 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="boxCol2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 456, 136 )
+shape = SubResource( 1 )
+
+[node name="boxCol4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 216, 152 )
+shape = SubResource( 2 )
+
+[node name="boxCol10" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 384, 136 )
+shape = SubResource( 3 )
+
+[node name="boxCol7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 152, 168 )
+shape = SubResource( 4 )
+
+[node name="boxCol8" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 296, 136 )
+shape = SubResource( 5 )
+
+[node name="boxCol9" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 48, 136 )
+shape = SubResource( 6 )
